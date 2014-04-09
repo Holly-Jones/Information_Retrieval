@@ -154,4 +154,5 @@ site s so that query processing can be made more efficient by reducing communica
 
 
 <li><h2>Querying:</h2></li>
+<li><strong>Query Input:</strong> </li>
 </ol>
