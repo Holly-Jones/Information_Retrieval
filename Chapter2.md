@@ -149,10 +149,32 @@ subset of the documents (document distribution], both indexing and query process
 distribution] can also support parallel processing of queries. Replication is a form
 of distribution where copies of indexes or parts of indexes are stored in multiple
 site s so that query processing can be made more efficient by reducing communication delays.  </li>
-</ul>
+
 
 
 
 <li><h2>Querying:</h2></li>
-<li><strong>Query Input:</strong> </li>
+<li><strong>Query Input:</strong> The query input component provides an interface and a parser for a query language. The simplest query languages, such as those used in most web search interfaces, have only a small number of <strong>operators</strong>. An operator is a command in the
+query language that is used to indicate text that should be treated in a special way. <strong>In the same way that the SQL query language (Elmasri & Navathe, 2006)
+is not designed for the typical user of a database application (the end user], these
+query languages are not designed for the end users of search applications. </strong></li>
+
+<br>
+
+<li><strong>Query Transformation:</strong> The query transformation component includes a range of techniques that are designed to improve the initial query, both befor e and afte r producing a document
+ranking. The simplest processing involves some of the same text transformation
+techniques used on document text. Tokenizing, stopping, and stemming must be
+done on the query text to produce index terms that are comparable to the document terms.
+<br>
+<br>
+<ol>
+<li><strong>Spell Checking</strong> and <strong>Query Suggestion</strong> provide alternatives to the original query. <strong>These techniques often leverage the extensive query logs collected for web applications.</strong></li>
+<br>
+<li><strong>Query Expansion</strong> and <strong>Relevance Feedback</strong> modify the query by adding additional terms, but usually based on an analysis of term occurrences in documents. <strong>This analysis may use different sources of
+information , such as the whole document collection, the retrieved documents, or
+documents on the user's computer.</strong> </li>
+</ol>
+
+</li>
+</ul>
 </ol>
