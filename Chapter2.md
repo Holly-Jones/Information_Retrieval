@@ -24,9 +24,9 @@ enable searching, and the query process uses those structures and a person's que
 to produce a ranked list of documents.</p>
 
 <ol>
-<li><h2>Indexing:</h2></li>
+<li><h2>Indexing</h2></li>
 
-<ul><li><h3>Text Acquisition:</h3> The task of the text acquisition component is to identify and make available
+<ul><li><h3>Text Acquisition</h3> The task of the text acquisition component is to identify and make available
 the documents that will be searched (i.e. building a collection using a web crawler). In addition to passing documents to the next component in the indexing process, the text acquisition component creates a document data store, which contains the text and metadata for all the documents.
 Metadata is information about a document that is not part of the text content,
 such the document type (e.g., email or web page), document structure, and other
@@ -37,7 +37,7 @@ consists of document metadata and other information extracted from the documents
 database system can be used to store the documents and metadata. Some applications, however, use a simpler, more efficient storage system to provide very fast
 retrieval times for very large document stores. </li>
 
-<li><h3>Text Transformation:</h3> </li>
+<li><h3>Text Transformation</h3> </li>
 
 <li><strong>Parsers:</strong> The parsing component is responsible for processing the sequence of text tokens
 in the document to recognize structural elements such as titles, figures, links, and
@@ -46,6 +46,45 @@ or XML. The document parser uses knowledge of the syntax of the
 markup language to identify the structure. Both HTML and XML use tags to define document elements. Tags and
 other control sequences must be treated appropriately when tokenizing. </li>
 
+<br>
+
+<li><strong>Stopping:</strong> The stopping component has the simple task of removing common words fro m
+the stream of tokens that become index terms. The most common words are typically function words that help form sentence structure but contribute little on
+their own to the description of the topics covered by the text. Examples are "the",
+"of" , "to", and "for" . Because they are so common, removing them can reduce the
+size of the indexes considerably.
+
+<br>
+<br>
+Some stopword lists used in research contain hundreds of words. The
+problem with using such lists is that it becomes impossible to search with queries
+like "to be or not to be" or "down under". To avoid this, search applications may
+use very small stopword lists (perhaps just containing "the") when processing document text, but then use longer lists for the default processing of query text.
+</li>
+
+<br>
+
+<li><strong>Stemming:</strong> Stemming is another word-level transformation. The task of the stemming component (or stemmer) is to group words that are derived fro m a common stem.
+Grouping "fish", "fishes", and "fishing" is one example. By replacing each member
+of a group with one designated word (fo r example, the shortest, which in this case
+is "fish"), we increase the likelihood that words used in queries and documents
+will match. Stemming, in fact, generally produces small improvements in ranking
+effectiveness. However, <strong>aggressive stemming</strong> can cause search problems. It may not be
+appropriate, for example, to retrieve documents about different varieties of fish in
+response to the query "fishing".  </li>
+
+<br>
+
+<li><strong>Link Extraction and Analysis:</strong> Links and corresponding anchor text are extracted during the document parsing stage, recorded in the document data store, and indexed separately from general text content.<strong> Web search engines make extensive use of this information
+through link analysis algorithms such as PageRank (Brin & Page, 1998)</strong>. Link
+analysis provides the search engine with a rating of the popularity, and to some
+extent, the authority of a page (in other words, how important it is). Anchor text,
+which is the clickable text of a web link, can be used to enhance the text content
+of a page that the link points to. These two factors can significantly improve the
+effectiveness of web search for some types of queries.</li>
 </ul>
+
+
+
 <li><h2>Querying:</h2></li>
 </ol>
