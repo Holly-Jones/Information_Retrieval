@@ -82,6 +82,73 @@ extent, the authority of a page (in other words, how important it is). Anchor te
 which is the clickable text of a web link, can be used to enhance the text content
 of a page that the link points to. These two factors can significantly improve the
 effectiveness of web search for some types of queries.</li>
+
+<br>
+
+<li><strong>Information Extraction:</strong> Informatio n extraction is used to identify index terms that are more complex than
+single words. This may be as simple as words in bold or words in headings, but in
+general may require significan t additional computation. Extracting syntactic features such as noun phrases, for example, requires some form of syntactic analysis
+or part-of-speech tagging. Research in this area has focuse d on techniques for extracting feature s with specific semantic content, such as named entity recognizers,
+which can reliably identify information such as person names, company names,
+dates, and locations.</li>
+
+<br>
+
+<li><strong>Classifiers:</strong> The classifier component identifie s class-related metadata for documents or parts
+of documents. This covers a range of functions that are ofte n described separately.
+Classificatio n techniques assign predefined class labels to documents. These labels
+typically represent topical categories such as "sports", "politics", or "business".
+<br><br>
+Clustering techniques are used to group related documents without predefined
+categories. These document groups can be used in a variety of ways during ranking
+or user interaction.</li>
+
+<br>
+
+<li><h3>Index Creation</h3></li>
+
+<li><strong>Document Statistics:</strong> The task of the document statistics component is simply to gather and record
+statistical information about words, features, and documents. This information
+is used by the ranking component to compute scores for documents. The types
+of data generally required are the counts of index term occurrences (both words
+and more complex features) in individual documents, the positions in the documents where the index terms occurred, the counts of occurrences over groups
+of documents (such as all documents labeled "sports" or the entire collection of
+documents), and the lengths of documents in terms of the number of tokens. <strong>The document statistics are stored in lookup tables, which are data
+structures designed for fast retrieval.</strong></li>
+
+<br>
+
+<li><strong>Weighting:</strong> Index term weights reflec t the relative importance of words in documents, and
+are used in computing scores for ranking. <strong>The weighting component calculates weights using
+the document statistics and stores them in lookup tables.</strong> Weights could be calculated as part of the query process, and some types of weights require information
+about the query, but by doing as much calculation as possible during the indexing
+process, the efficiency of the query process will be improved.
+<br><br>
+<strong>One of the most common types used in older retrieval models is known as tf.idf
+weighting. </strong> There are many variations of these weights, but they are all based on a
+combination of the frequenc y or count of index term occurrences in a document
+(the term frequency, or tf) and the frequenc y of index term occurrence over the
+entire collection of documents (inverse document frequency, or idf}. The /^weight
+is called inverse document frequency because it gives high weights to terms that
+occur in very few documents. A typical formula for idfis log N/n, where N is the total number of documents indexed by the search engine and n is the number of
+documents that contain a particular term.</li>
+
+<br>
+
+<li><strong>Inversion:</strong> The inversion component is the core of the indexing process. Its task is to change
+the stream of document-term information coming fro m the text transformation
+component into term-document information for the creation of inverted indexes.
+</li>
+
+<br>
+
+<li><strong>Index Distribution:</strong> The index distribution component distributes indexes across multiple computers
+and potentially across multiple sites on a network. Distribution is essential for
+efficient performance with web search engines. By distributing the indexes for a
+subset of the documents (document distribution], both indexing and query processing can be done inparallel. Distributing the indexes for a subset of terms (term
+distribution] can also support parallel processing of queries. Replication is a form
+of distribution where copies of indexes or parts of indexes are stored in multiple
+site s so that query processing can be made more efficient by reducing communication delays.  </li>
 </ul>
 
 
