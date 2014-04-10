@@ -195,7 +195,7 @@ these models is:
 <strong>(summation symbol) E (qi * di) 
 <br>
 <br>
-where qi and di are query and document term weights for term i</strong> The term weights depend on the particular retrieval model being used, but are
+where qi and di are query and document term weights for term i</strong> The term weights depend on the particular retrieval model being used, but are
 generally similar to tf.idf weights.
 <br>
 <br>
@@ -203,7 +203,56 @@ generally similar to tf.idf weights.
 determine the ranked order of the documents that are given to the results output
 component. This is the task of the performance optimization component.</strong></li>
 
+<li><h3>Performance Optimization:</h3> <strong>Performance optimization involves the design of ranking algorithms and the associated indexes to decrease response time and increase query throughput.</strong>
+<br>
+<br>
+For example, scores can
+be computed by accessing the index for a query term, computing the contribution
+fo r that term to a document's score, adding this contribution to a score accumulator, and then accessing the next index. This is referre d to as term-at-a-time scoring.
+Another alternative is to access all the indexes for the query terms simultaneously,
+and compute scores by moving pointers through the indexes to find the terms
+present in a document. In this document-at-a-time scoring, the final document
+score is calculated immediately instead of being accumulated one term at a time.
+In both cases, further optimizations are possible that significantly decrease the
+time required to compute the top-ranked documents. </li>
+
+<li><h3>Distribution:</h3> Given some form of index distribution, ranking can also be distributed. A query
+broker decides how to allocate queries to processors in a network and is responsible for assembling the final ranked list for the query. The operation of the broker
+depends on the form of index distribution. Caching is another form of distribution where indexes or even ranked document lists fro m previous queries are left in
+local memory. </li>
+
+<li><h2>Evaluation</h2></li>
+
+<li><h3>Logging:</h3> <strong>Logs of the users' queries and their interactions with the search engine are one
+of the most valuable sources of information for tuning and improving search effectiveness and efficiency.</strong>
+
+<br>
+<br>
+Query logs can be used for spell checking, query suggestions, query caching, and other tasks, such as helping to match advertising to
+searches. Documents in a result list that are clicked on and browsed tend to be
+relevant. This means that logs of user clicks on documents (clickthrough data)
+and information such as the dwell time (time spent looking at a document) can
+be used to evaluate and train ranking algorithms.</li>
+
+<li><h3>Ranking Analysis:</h3><strong> Given either log data or explicit relevance judgments for a large number of (query,
+document) pairs, the effectiveness of a ranking algorithm can be measured and
+compared to alternatives.</strong> This is a critical part of improving a search engine and
+selecting values for parameters that are appropriate for the application. A variety
+of evaluation measures are commonly used, and these should also be selected to
+measure outcomes that make sense for the application. <strong>Measures that emphasize
+the quality of the top-ranked documents, rather than the whole list, for example,
+are appropriate for many types of web queries.</strong>
+ </li>
+ 
+<li><h3>Performance Analysis:</h3>A variety of performance measures are used, such as response
+time and throughput, but the measures used also depend on the application. For
+example, a distributed search application should monitor network usage and efficienc y in addition to other measures. For ranking analysis, test collections are
+ofte n used to provide a controlled experimental environment. <strong>The equivalent for
+performance analysis is simulations, where actual networks, processors, storage
+devices, and data are replaced with mathematical models that can be adjusted using parameters.</strong>
+ </li>
 
 </li>
 </ul>
 </ol>
+
