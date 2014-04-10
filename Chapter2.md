@@ -175,6 +175,35 @@ information , such as the whole document collection, the retrieved documents, or
 documents on the user's computer.</strong> </li>
 </ol>
 
+<br>
+
+<li><strong>Results Output:</strong> This may include tasks such as
+generating snippets to summarize the retrieved documents, highlighting important words and passages in documents, clustering the output to identify related
+groups of documents, and finding appropriate advertising to add to the results
+display. </li>
+
+<li><h2>Ranking</h2></li>
+
+<li><h3>Scoring:</h3> The scoring component, also called query processing, calculates scores for documents using the ranking algorithm, which is based on a retrieval model.
+<br>
+<br>
+Many different retrieval models and methods of deriving ranking algorithms
+have been proposed. The basic form of the document score calculated by many of
+these models is:
+<br>
+<br>
+<strong>(summation symbol) E (qi * di) 
+<br>
+<br>
+where qi and di are query and document term weights for term i</strong> The term weights depend on the particular retrieval model being used, but are
+generally similar to tf.idf weights.
+<br>
+<br>
+<strong>The document scores must be calculated and compared very rapidly in order to
+determine the ranked order of the documents that are given to the results output
+component. This is the task of the performance optimization component.</strong></li>
+
+
 </li>
 </ul>
 </ol>
