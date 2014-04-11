@@ -5,3 +5,9 @@
 <li>CH1: Introductory Content</li>
 <li>CH2: Architecture of a Search Engine <strong>(most crucial chapter)</strong></li>
 </ol>
+
+
+<h4>Assignments</h4>
+<ol>
+<li>IS392RE: Retrieval experiment </li>
+</ol>
