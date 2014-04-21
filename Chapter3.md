@@ -109,3 +109,12 @@ frequently each page changes.</strong>
 
 <p>That's why <strong>age is  a better metric to use</strong>. Under the age metric, the page has age 0 until it is changed,
 and then its age grows until the page is crawled again. <strong>We can calculated the expected age of a page as well. Studies have shown that, on average, web page updates follow the Poisson distribution, meaning that the time until the next update is governed by an exponential distribution. </strong> </p>
+
+<p><strong>Notice that the second derivative of the Age function is always positive. That
+is, the graph is not only increasing, but its rate of increase is always increasing. This
+positive second derivative means that the older a page gets, the more it costs you
+to not crawl it. Optimizing this metric will never result in the conclusion that
+optimizing for freshness does, where sometimes it is economical to not crawl a
+page at all.</strong></p>
+
+
