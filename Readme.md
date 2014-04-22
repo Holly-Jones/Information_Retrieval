@@ -4,6 +4,7 @@
 <ol>
 <li>CH1: Introductory Content</li>
 <li>CH2: Architecture of a Search Engine <strong>(most crucial chapter)</strong></li>
+<li>CH3: How Web Crawlers Work
 </ol>
 
 
