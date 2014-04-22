@@ -116,5 +116,46 @@ positive second derivative means that the older a page gets, the more it costs y
 to not crawl it. Optimizing this metric will never result in the conclusion that
 optimizing for freshness does, where sometimes it is economical to not crawl a
 page at all.</strong></p>
+<br>
+<h3>Document Storage</h3>
+<p>The simplest document storage is no document storage, and for some applications this is preferable. In desktop search, for
+example, the documents are already stored in the file system and do not need to be
+copied elsewhere. As the crawling process runs, it can send converted documents
+immediately to an indexing process. By not storing the intermediate converted
+documents, desktop search systems can save disk space and improve indexing latency.</p>
 
+
+<p>Most other kinds of search engines need to store documents somewhere. Even if snippets are not necessary , there are other reasons to keep a copy of
+each document. Crawling for documents can be expensive in terms of both CPU
+and network load. It makes sense to keep copies of the documents around instead
+of trying to fetch them again the next time you want to build an index. Keeping old documents allows you to use HEAD requests in your crawler to save on
+bandwidth, or to crawl only a subset of the pages in your index.  </p>
+
+<p>Finally, document storage systems can be a starting point for information extraction (described in Chapter 4). The most pervasive kind of information extraction happens in web search engines, which extract anchor text fro m links to
+store with target web documents. Other kinds of extraction are possible, such as
+identifyin g names of people or places in documents. Notice that if informatio n
+extraction is used in the search application, the document storage system should
+support modification of the document data. </p>
+
+<br>
+
+<h3>Google's BigTable</h3>
+<p>BigTable is a distributed database system originally built for the task of storing
+web pages. A BigTable instance really is a big table; it can be over a petabyte in
+size, but each database contains only one table. The table is split into small pieces,
+called tablets, which are served by thousands of machines (Figure 3.12). </p>
+
+<p>If you are familiar with relational databases, you will have encountered SQL
+(Structured Query Language). SQL allows users to write complex and computationally expensive queries, and one of the tasks of the database system is to optimize the processing of these queries to make them as fast as possible. Because some
+of these queries could take a very long time to complete, a large relational database
+requires a complex locking system to ensure that the many users of the database
+do not corrupt it by reading or writing data simultaneously. Isolating users from
+each other is a difficult job, and many papers and books have been written about
+how to do it well.</p>
+
+<p><strong>The BigTable approach is quite different. There is no query language, and
+therefore no complex queries, and it includes only row-level transactions, which
+would be considered rather simple by relational database standards.</strong> However, the
+simplicity of the model allows BigTable to scale up to very large database size s
+while using inexpensive computers, even though they may be prone to failure.</p>
 
